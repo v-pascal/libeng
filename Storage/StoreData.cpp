@@ -35,15 +35,12 @@ bool StoreData::remove(wchar_t type, const char* key) {
         case DATA_CHAR:     return rmv<CharMap>(mCharMap, key);
         case DATA_SHORT:    return rmv<ShortMap>(mShortMap, key);
         case DATA_INT:      return rmv<IntMap>(mIntMap, key);
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_STORAGE, 0, LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__,
-                    static_cast<int>(type));
+            LOGF(LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type));
             assert(NULL);
             break;
         }
-#endif
     }
     return false;
 }
@@ -66,15 +63,12 @@ void* StoreData::get(wchar_t type, const char* key) {
         case DATA_CHAR:     return static_cast<void*>(ret<CharMap, unsigned char>(mCharMap, key));
         case DATA_SHORT:    return static_cast<void*>(ret<ShortMap, short>(mShortMap, key));
         case DATA_INT:      return static_cast<void*>(ret<IntMap, int>(mIntMap, key));
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_STORAGE, 0, LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__,
-                    static_cast<int>(type));
+            LOGF(LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type));
             assert(NULL);
             break;
         }
-#endif
     }
     return NULL;
 }

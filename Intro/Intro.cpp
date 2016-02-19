@@ -281,15 +281,12 @@ void WaitConn::moveDog() {
             --mMainStep;
             break;
         }
-
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(), __PRETTY_FUNCTION__, __LINE__);
+            LOGF(LOG_FORMAT(" - Unexpected step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
             assert(NULL);
             break;
         }
-#endif
     }
 }
 void WaitConn::exitConn() {
@@ -383,15 +380,12 @@ void WaitConn::exitConn() {
             --mMainStep;
             break;
         }
-
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(" - Step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
+            LOGF(LOG_FORMAT(" - Unexpected step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
             assert(NULL);
             break;
         }
-#endif
     }
 }
 void WaitConn::hideConn() {
@@ -463,15 +457,12 @@ void WaitConn::hideConn() {
             --mMainStep;
             break;
         }
-
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(" - Step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
+            LOGF(LOG_FORMAT(" - Unexpected step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
             assert(NULL);
             break;
         }
-#endif
     }
 }
 void WaitConn::update() {
@@ -544,15 +535,12 @@ void WaitConn::update() {
             }
             break;
         }
-
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(" - Step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
+            LOGF(LOG_FORMAT(" - Unexpected step: %d"), __PRETTY_FUNCTION__, __LINE__, mMainStep);
             assert(NULL);
             break;
         }
-#endif
     }
 }
 void WaitConn::render() const {
@@ -762,14 +750,12 @@ void Intro::update() {
                 case LANG_ES:
                 case LANG_IT: presentsCoords = gs_presentsES; break;
                 case LANG_PT: presentsCoords = gs_presentsPT; break;
-#ifdef DEBUG
                 default: {
 
-                    LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(), __PRETTY_FUNCTION__, __LINE__);
+                    LOGF(LOG_FORMAT(" - Unexpected language: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(mLang));
                     assert(NULL);
                     break;
                 }
-#endif
             }
 
             float coords[8] = {0};
@@ -897,15 +883,12 @@ void Intro::update() {
             mWaitConn->update();
             break;
         }
-
-#ifdef DEBUG
         default: {
 
-            LOGD(LIBENG_LOG_INTRO, 0, LOG_FORMAT(), __PRETTY_FUNCTION__, __LINE__);
+            LOGF(LOG_FORMAT(" - Unexpected step: %d"), __PRETTY_FUNCTION__, __LINE__, mStep);
             assert(NULL);
             break;
         }
-#endif
     }
 }
 void Intro::render() const {

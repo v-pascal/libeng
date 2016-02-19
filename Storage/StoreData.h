@@ -75,15 +75,12 @@ public:
             case DATA_CHAR:     return insert<CharMap, unsigned char>(mCharMap, key, static_cast<unsigned char*>(value));
             case DATA_SHORT:    return insert<ShortMap, short>(mShortMap, key, static_cast<short*>(value));
             case DATA_INT:      return insert<IntMap, int>(mIntMap, key, static_cast<int*>(value));
-#ifdef DEBUG
             default: {
 
-                LOGD(LIBENG_LOG_STORAGE, 0, LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__,
-                        static_cast<int>(type));
+                LOGF(LOG_FORMAT(" - Unknown store data type: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type));
                 assert(NULL);
                 break;
             }
-#endif
         }
         return false;
     }

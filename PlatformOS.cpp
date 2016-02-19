@@ -334,14 +334,12 @@ void PlatformOS::touch(unsigned int id, unsigned char type, short x, short y) {
         case 3: touchType = TouchInput::TOUCH_CANCEL; break;    // MotionEvent.ACTION_CANCEL
         case 5: touchType = TouchInput::TOUCH_DOWN; break;      // MotionEvent.ACTION_POINTER_DOWN
         case 6: touchType = TouchInput::TOUCH_UP; break;        // MotionEvent.ACTION_POINTER_UP
-#ifdef DEBUG
         default: {
 
-            LOGE(LOG_FORMAT(" - Wrong touch type"), __PRETTY_FUNCTION__, __LINE__);
+            LOGF(LOG_FORMAT(" - Unexpected touch type: %d"), __PRETTY_FUNCTION__, __LINE__, type);
             assert(NULL);
             break;
         }
-#endif
     }
 #else
     switch (type) {
@@ -349,14 +347,12 @@ void PlatformOS::touch(unsigned int id, unsigned char type, short x, short y) {
         case TOUCH_MOVED:        touchType = TouchInput::TOUCH_MOVE; break;
         case TOUCH_ENDED:        touchType = TouchInput::TOUCH_UP; break;
         case TOUCH_CANCELLED:    touchType = TouchInput::TOUCH_CANCEL; break;
-#ifdef DEBUG
         default: {
 
-            LOGE(LOG_FORMAT(" - Wrong touch type"), __PRETTY_FUNCTION__, __LINE__);
+            LOGF(LOG_FORMAT(" - Unexpected touch type: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type));
             assert(NULL);
             break;
         }
-#endif
     }
 #endif
 

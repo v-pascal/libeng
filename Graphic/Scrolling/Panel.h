@@ -138,14 +138,12 @@ public:
             case ScrollPanel::OVF_RIGHT:    return (mVertices[4] < bLeftVia(bounds)->mLeft);
             case ScrollPanel::OVF_BOTTOM:   return (mVertices[3] > bTopVia(bounds)->mTop);
             case ScrollPanel::OVF_TOP:      return (mVertices[1] < bBotVia(bounds)->mBottom);
-#ifdef DEBUG
             default: {
 
-                LOGD(LIBENG_LOG_SCROLLING, 0, LOG_FORMAT(" - Unknown scroll overflow: %d"), __PRETTY_FUNCTION__, __LINE__,
-                        static_cast<int>(ovf));
+                LOGF(LOG_FORMAT(" - Unknown scroll overflow: %d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(ovf));
+                assert(NULL);
                 break;
             }
-#endif
         }
         return false;
     }

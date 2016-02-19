@@ -100,12 +100,10 @@ public:
                 LOGV(LIBENG_LOG_INPUT, (mLogGet % 100), LOG_FORMAT(" - ACCEL (d:%p; i:%d)"), __PRETTY_FUNCTION__, __LINE__, data, index);
                 break;
             }
-#ifdef DEBUG
             default: {
                 LOGD(LIBENG_LOG_INPUT + 1, 0, LOG_FORMAT(" - t:%d"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type));
                 break;
             }
-#endif
         }
 #endif
         if (mInputs[type])
@@ -135,12 +133,10 @@ public:
                             __LINE__, data);
                     break;
                 }
-#ifdef DEBUG
                 default: {
                     LOGD(LIBENG_LOG_INPUT + 1, 0, LOG_FORMAT(" - t:%d; d:%p"), __PRETTY_FUNCTION__, __LINE__, static_cast<int>(type), data);
                     break;
                 }
-#endif
             }
             mInputs[type] = new inputClass(data);
         }
